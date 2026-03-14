@@ -21,7 +21,7 @@ A voice agent project for an Amazon/DoorDash-style business: order status, track
    python -m venv .venv
    .venv\Scripts\activate   # Windows
    pip install -r requirements.txt
-   # Set OPENAI_API_KEY in .env (copy from .env.example)
+   # Set API keys in .env: GROQ_API_KEY (LLM, primary) and OPENAI_API_KEY (STT/TTS)
    uvicorn main:app --reload
    ```
    Server: http://localhost:8000. Docs: http://localhost:8000/docs.

@@ -8,13 +8,26 @@ Concepts:
 - Tool-calling loop: invoke model -> if response has tool_calls, run each tool, append ToolMessage(s), invoke again -> until we get a final text reply.
 """
 
+import os
 from typing import Optional
 
 from langchain_core.messages import AIMessage, BaseMessage, HumanMessage, SystemMessage, ToolMessage
 from langchain_core.tools import StructuredTool
-from langchain_openai import ChatOpenAI
 
 from tools.order_tools import get_order_status, get_tracking_info, reorder_last_order, get_faq, cancel_order
+
+# LLM: Groq primary (free tier), fallback to OpenAI
+def _get_llm():
+    groq_key = os.getenv("GROQ_API_KEY")
+    if groq_key:
+        from langchain_groq import ChatGroq
+        return ChatGroq(
+            model="llama-3.1-70b-versatile",  # or llama-3.1-8b-instant for lower latency
+            api_key=groq_key,
+            temperature=0,
+        )
+    from langchain_openai import ChatOpenAI
+    return ChatOpenAI(model="gpt-4o-mini", temperature=0)
 
 
 # Default customer for demo (no auth yet). In production you'd get this from the session/token.

@@ -4,10 +4,12 @@
 # Web server
 fastapi>=0.109.0,<0.110
 uvicorn[standard]>=0.27.0
+python-multipart>=0.0.6
 
 # Agent & LLM
 langchain>=0.1.0
 langchain-openai>=0.0.5
+langchain-groq>=0.1.0
 langchain-core>=0.1.0
 
 # OpenAI (LLM + optional STT/TTS)
