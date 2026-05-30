@@ -14,7 +14,7 @@
 ┌──────────────────────────────────────────────────────────────────────────┐
 │  Backend (FastAPI)                                                        │
 │  1. STT:  audio bytes → OpenAI Whisper → transcript (text)                │
-│  2. Agent: transcript + session history → LLM + tools → reply (text)      │
+│  2. Agent: transcript + session history → Groq LLM + tools → reply (text)   │
 │  3. TTS:  reply → OpenAI TTS → audio bytes (MP3)                          │
 │  4. Return transcript, reply, base64(audio)                               │
 └──────────────────────────────────────────────────────────────────────────┘
@@ -25,7 +25,7 @@
 | Component | Role | Current choice | Swap later |
 |-----------|------|----------------|------------|
 | STT | Audio → text | OpenAI Whisper | Deepgram, AssemblyAI |
-| Agent | Text → tools + reply | LangChain + GPT-4o-mini | Other LLM / framework |
+| Agent | Text → tools + reply | LangChain + Groq (llama-3.1-70b), OpenAI fallback | Other LLM providers |
 | TTS | Text → audio | OpenAI TTS | ElevenLabs, Cartesia |
 | Memory | Per-session history | In-memory dict | Redis, DB |
 
