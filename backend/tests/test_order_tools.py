@@ -34,3 +34,8 @@ class TestOrderTools(unittest.TestCase):
     def test_cancel_order(self):
         reply = cancel_order("cust-alice")
         self.assertIn("cancelled", reply.lower())
+
+    def test_cancel_delivered_order_rejected(self):
+        reply = cancel_order("cust-bob", "QB-1002")
+        self.assertIn("delivered", reply.lower())
+        self.assertIn("cannot", reply.lower())
