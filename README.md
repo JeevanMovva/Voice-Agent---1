@@ -6,11 +6,11 @@ A voice agent project for an Amazon/DoorDash-style business: order status, track
 
 - **Goal**: Portfolio project demonstrating a production-style voice agent (speech-to-text → LLM agent with tools → text-to-speech).
 - **Use case**: Customer-style interactions—e.g., “Where’s my order?”, “Track my delivery”, “Reorder my last order”, FAQ.
-- **Stack (planned)**: Python, FastAPI, LangChain/LangGraph, streaming STT/TTS, simple web client.
+- **Stack**: Python, FastAPI, LangChain, Groq (LLM), OpenAI (STT/TTS), web client.
 
 ## Status
 
-- **Implemented**: Backend (FastAPI + LangChain agent + tools), STT/TTS (OpenAI), turn-based `/voice`, text chat + voice frontend, cancel-order tool, request logging. See **How to run** below.
+- **Implemented**: Backend (FastAPI + LangChain agent + tools), Groq LLM with OpenAI fallback, STT/TTS (OpenAI), turn-based `/voice`, text chat + voice frontend, cancel-order tool, request logging.
 - **Next**: Streaming, barge-in, or telephony (optional).
 
 ## How to run
