@@ -11,7 +11,9 @@
  */
 
 (function () {
-  const API_BASE = "http://localhost:8000";
+  const params = new URLSearchParams(window.location.search);
+  const API_BASE = params.get("api") || localStorage.getItem("voiceAgentApi") || "http://localhost:8000";
+  if (params.get("api")) localStorage.setItem("voiceAgentApi", API_BASE);
 
   const recordBtn = document.getElementById("recordBtn");
   const statusEl = document.getElementById("status");
