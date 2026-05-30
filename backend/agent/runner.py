@@ -114,7 +114,7 @@ def chat(
     """
     cid = customer_id or DEFAULT_CUSTOMER_ID
     tools = _make_tools(cid)
-    llm = ChatOpenAI(model="gpt-4o-mini", temperature=0).bind_tools(tools)
+    llm = _get_llm().bind_tools(tools)
 
     # Build message list: system + history + new user message
     system = SystemMessage(content=_system_prompt(cid))
